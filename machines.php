@@ -29,7 +29,7 @@ $shops = $shopsStatement -> fetchAll();
                     <?php foreach($products as $product):
                         $images = scandir($product['images']); ?>
                         <cafezone-product
-                            link = "product.php?<?php echo $product['reference'] ?>"
+                            link = "product.php?ref=<?php echo $product['reference'] ?>"
                             product_name = "<?php echo $product['name']?>"
                             image = "<?php echo $images[2]?>"
                             color = "<?php echo $product['color']?>"
@@ -54,7 +54,7 @@ $shops = $shopsStatement -> fetchAll();
                             <?php foreach($products as $product): 
                                 $images = scandir($product['images']);?>
                                 <cafezone-product
-                                link = "product.php?<?php echo $product['reference'] ?>"
+                                link = "product.php?ref=<?php echo $product['reference'] ?>"
                                 product_name = "<?php echo $product['name']?>"
                                 image = "<?php echo $images[2]?>"
                                 color = "<?php echo $product['color']?>"
