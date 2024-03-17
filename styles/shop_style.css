@@ -1,0 +1,64 @@
+.hero{
+    width: 100%;
+    background: url(../images/Shop/Background.png) no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+}
+
+.hero .title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-block: 1rem;
+    background-color: var(--transluscent_brown);
+}
+
+.hero .title img{
+    position: absolute;
+    height: 50%;
+    left: calc(50vw - calc(10rem + 15vw));
+}
+
+.hero .cards{
+    position: absolute;
+    justify-self: center;
+    width: 70%;
+    bottom: 2em;
+    display: flex;
+    justify-content: space-between;
+    overflow: auto;
+    align-items: flex-end;
+    height: 100%;
+}
+
+.hero .card{
+    margin-bottom: 5vh;
+    margin-inline: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    transition: 200ms;
+    width: 13vw;
+    min-width: 200px;
+    height: 15vw;
+    min-height: 250px;
+    background: var(--transluscent_white);
+    filter: drop-shadow(0 .5rem .5rem rgba(0, 0, 0, 0.354));
+}
+
+.hero .card:hover{
+    transform: translateY(-2rem);
+    background-color: rgb(222 217 225 / 90%);
+    cursor: pointer;
+}
+
+@media (orientation : portrait){
+    .hero .title img{
+        left: calc(50vw - 28rem);
+    }
+}

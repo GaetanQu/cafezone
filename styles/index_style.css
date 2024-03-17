@@ -1,0 +1,144 @@
+.hero{
+    background: url(../images/Hero/Background.png) no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.hero .title{
+    padding-block: 1.5rem;
+    background-color: var(--transluscent_dark_brown);
+}
+
+h1{
+    width: 100%;
+}
+
+.departement{
+    height: calc(100lvh - var(--header_height));
+    background: url(../images/Departement/Background.jpg);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+}
+
+.departement .blur{
+    background-color: var(--blur_color);
+    width: 90%;
+    height: 75%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.map{
+    margin-left: 7%;
+    width: 35%;
+    background: rgb(0 0 0 / 0%);
+}
+
+.map path{
+    fill: gray;
+    stroke: white;
+    stroke-width: 0.5px;
+    transition: 100ms;
+}
+
+.map path:hover{
+    fill: var(--CTA_enabled);
+    transition: 200ms;
+    stroke: none;
+    cursor: pointer;
+}
+
+.map path.active{
+    fill: var(--CTA_enabled);
+    transition: 200ms;
+    stroke: none;
+}
+
+.corsica_hover{
+    fill: var(--CTA_enabled)!important;
+    transition: 200ms;
+    stroke: none;
+}
+
+.selection{
+    position: relative;
+    width: 40%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.departement .selection .title{
+    position: relative;
+    top: -.5em;
+    width: 110%;
+    padding-right: 10%;
+    padding-block: .5em;
+    background-color: var(--dark_brown);
+}
+
+.departement .selection select{
+    position: relative;
+    top: 1.5em;
+    padding-inline: 1rem;
+    margin-right: 1rem;
+    padding-block: .2rem;
+    font-size: calc(.5rem + 1vw);
+    background-color: var(--background_color);
+    border: none;
+    color: var(--main_text_color);
+}
+
+select::-webkit-scrollbar{
+    width: 10px;
+    background-color: none;
+}
+
+select::-webkit-scrollbar-thumb{
+    background-color: rgba(148, 148, 148, 0.5);
+}
+
+.departement .selection input{
+    position: absolute;
+    align-self: center;
+    bottom: 1em;
+    font-size: 2rem;
+    padding-block: .5rem;
+    width: 80%;
+    background-color: #391F0E;
+    border: none;
+    color: white;
+    display: none;
+}
+
+@media (orientation : portrait) {
+    .departement{
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .departement .map{
+        margin-top: 5em;
+        width: 90%;
+    }
+
+    .departement .selection{
+        width: 100%;
+    }
+
+    .departement .selection .title{
+        padding: 0;
+    }
+
+    .departement .selection input{
+        display: block;
+    }
+
+}

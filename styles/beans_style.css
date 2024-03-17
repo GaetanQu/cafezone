@@ -1,0 +1,35 @@
+#beans{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+#famous{
+    position: relative;
+    width: 90%;
+    height: 20vw;
+    margin-block:2em ;
+
+    display: flex;
+    align-items: flex-end;
+
+    background-image: url(../images/Beans/Famous.png);
+    background-size: cover;
+    background-position: center;
+}
+
+.title{
+    background-color: var(--famous_bean_shop_color);
+    transition: var(--title_transition);
+}
+
+.title:hover{
+    transform: translateY(-20px);
+    transition: var(--title_transition);
+}
+
+ #famous:hover .title{
+    transition: var(--title_transition);
+    transform: translate(0,-20px);
+}

@@ -1,0 +1,171 @@
+.separator{
+    height: 2px;
+    background-color: rgba(103, 103, 103, 0.266);
+    width: 80%;
+    border-radius: 2px;
+    margin-block: 1rem;
+}
+
+.filters.side{
+    transition: 500ms;
+
+    position: fixed;
+    left: -300px;
+    top: 230px;
+
+    z-index: 2;
+    height: fit-content;
+
+    width: 300px;
+    min-height: 60vh;
+    max-height: 70vh;
+
+    padding-right: 2rem;
+
+    background-color: var(--filters);
+    filter: drop-shadow(2px 2px 2px rgb(0 0 0 /10%));
+    overflow-y: hidden;
+}
+
+.filters.side:hover{
+    position: fixed;
+    transition: 500ms;
+    transform: translateX(300px);
+    overflow-y: auto;
+}
+
+
+.filters ul li{
+    z-index: 2;
+}
+
+.filters ul li :hover{
+    cursor: pointer;
+}
+
+.filters ul input{
+    z-index: 2;
+}
+
+.filters a{
+    color: var(--Text_dark);
+}
+
+.filters.side :hover + #title{
+    opacity: 0;
+}
+
+.filters.side #title{
+    position: absolute;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    text-align: center;
+    right: .5rem;
+    top: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.filters.side #title:hover{
+    opacity: 0;
+}
+
+.filters h3{
+    margin-top: 0;
+    padding: 15px;
+    background: var(--CTA_enabled);
+}
+
+.filters ul{
+    list-style: none;
+}
+
+.filters .sca{
+    width: 150px;
+}
+
+.filters .slider{
+    position: relative;
+    height: 5px;
+    margin: 20px;
+    border-radius: 5px;
+}
+
+.filters .slider .selected{
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background-color:#c79090;
+}
+
+.sca-input{
+    display: flex;
+    justify-content: space-around;
+}
+
+.sca-input input{
+    width: 2em;
+    text-align: center;
+    border: none;
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 16px;
+    background: none;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+}
+
+.filters .range-input{
+    position: relative;
+}
+
+.filters .range-input input{
+    margin-left: 10px;
+    position: absolute;
+    -webkit-appearance: none;
+    background: none;
+    height: 5px;
+    top: -27px;
+    pointer-events: none;
+}
+
+input[type="range"]::-webkit-slider-thumb{
+    pointer-events: auto;
+    height: 17px;
+    width: 17px;
+    -webkit-appearance: none;
+    background: #966c6c;
+    border-radius: 50%;
+}
+
+.filters .country ul{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    padding-left: 1em;
+}
+
+.filters .country ul country-filter{
+    display: grid;
+    grid-template-columns: 1rem 1fr;
+    gap: .5em;
+}
+
+.filters .country ul li input{
+    width: 100%;
+    height: 100%;
+}
+
+.filters ul{
+    display:flex;
+    flex-direction: column;
+}
+
+.filters li{
+    padding-block: .5rem;
+}
