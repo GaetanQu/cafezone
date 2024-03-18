@@ -2,11 +2,11 @@
     display: flex;
     justify-content: center;
     padding: 3em;
+    padding-inline: 10em;
 }
 
 .product .images_div{
-    position: relative;
-    width: 35%;
+    flex: 2;
 }
 
 .product .images_div #div{
@@ -102,6 +102,10 @@
 
 .product .details h4{
     margin: 0;
+}
+
+.product .infos{
+    flex: 3;
 }
 
 .product .infos .price{

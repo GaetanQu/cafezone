@@ -18,19 +18,15 @@ productRightArrow.onclick = ()=>{
 //Avec les miniatures
 var thumbnails = document.querySelectorAll('.product .thumbnails > img');
 
+//Gestion de la classe active des miniatures
 toggleThumbnailActive();
 
-images_div.addEventListener('scroll', ()=>{
+images_div.onscrollend = ()=>{
     toggleThumbnailActive();
-})
+}
 
 function toggleThumbnailActive (){
-    console.log('ScrollLeft : ' + images_div.scrollLeft)
-    console.log(("div size : " + images_div.clientWidth))
- 
     thumbnails.forEach(thumbnail=>{
-    console.log(images_div.clientWidth * (thumbnail.classList[0]-1))
-
         if(Math.abs(images_div.scrollLeft - (images_div.clientWidth * (thumbnail.classList[0]-1))) < 10){
             thumbnail.classList.add('active');
         }
@@ -39,3 +35,12 @@ function toggleThumbnailActive (){
         }
     })
 }
+
+//Gestion du clic sur les miniatures
+thumbnails.forEach(thumbnail =>{
+    thumbnail.onclick = ()=>{
+        thumbnail.classList.add('active');
+        images_div.scrollLeft = images_div.clientWidth * (thumbnail.classList[0] - 1)
+
+    }
+})
