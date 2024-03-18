@@ -1,4 +1,6 @@
-<header class="header"> 
+<script type="module" src="js/header.js"></script>
+
+<header class="header">
     <div class = "top">
     <img src="images/Header/Burger.png" class="burger" draggable="true">
         <a href="index.php"> <img src="images/Header/Logo light.png" alt="Logo" id="logo"> </a>

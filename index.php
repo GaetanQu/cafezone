@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/index_style.css">
     <title>CaféZone</title>
-    <script type="module" src="main.js"></script>
+    <script type="module" src="js/index_source.js"></script>
 </head>
 
 <body>

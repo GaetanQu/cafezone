@@ -17,7 +17,7 @@ $shops = $shopsStatement -> fetchAll();
     <meta charset="UTF-8">
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/products_style.css">
-    <script type="module" src="main.js"></script>
+    <script type="module" src="js/products_source.js"></script>
 </head>
 
 <body>
