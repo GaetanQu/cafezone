@@ -1,14 +1,23 @@
 <?php require_once(__DIR__ . '/pdo.php'); ?>
 
 <?php
-$productInfosStatement = $mysqlClient -> prepare('SELECT products.images AS images, products.name AS name, brands.name AS brand, products.description AS description, products.reference AS reference, products.price AS price, shops.color AS color FROM products JOIN shops_products ON products.id = shops_products.product_id JOIN shops ON shops.id = shops_products.shop_id JOIN brands ON brands.id = products.brand_id WHERE products.reference ="'.$_GET['ref'].'"');
+$productInfosStatement = $mysqlClient -> prepare('SELECT products.id AS id, products.images AS images, products.name AS name, brands.name AS brand, products.description AS description, products.reference AS reference, products.price AS price, shops.name AS shop, shops.color AS color FROM products JOIN shops_products ON products.id = shops_products.product_id JOIN shops ON shops.id = shops_products.shop_id JOIN brands ON brands.id = products.brand_id WHERE products.reference ="'.$_GET['ref'].'"');
 $productInfosStatement -> execute();
 $productsInfos = $productInfosStatement -> fetchAll();
 
 $product = $productsInfos[0];
 
+$ratingsStatement = $mysqlClient -> prepare('SELECT * FROM ratings WHERE product_id = '.$product['id']);
+$ratingsStatement -> execute();
+$ratings = $ratingsStatement -> fetchAll();
 
-$images = scandir('images/Products/'.$_GET['ref'])
+$avgRatingStatement = $mysqlClient -> prepare('SELECT AVG(stars) FROM ratings WHERE product_id = '.$product['id']);
+$avgRatingStatement -> execute();
+$avgRatinglist = $avgRatingStatement -> fetchAll();
+
+$avgRating = $avgRatinglist[0][0];
+
+$images = scandir('images/Products/'.$_GET['ref']);
 ?>
 
 <DOCTYPE html>
@@ -52,7 +61,22 @@ $images = scandir('images/Products/'.$_GET['ref'])
             </div>
             <div class="details">
                 <h4><?php echo $product['description'] ?></h4>
+                <p>Vendu par <?php echo $product['shop'] ?></p>
                 <p>Référence : <?php echo $product['reference']?></p>
+                <div class="rating">
+                    <?php for($i = 1; $i <= 5; $i++):?>
+                        <img src="<?php 
+                            if($avgRating >= $i)
+                            {
+                                echo  'images/Icons/active star.svg';
+                            }
+                            else
+                            {
+                                echo 'images/Icons/star.svg';
+                            }
+                        ?>">
+                    <?php endfor?>
+                </div>
             </div>
             <div class="price">
                 <input type="number" name="quantity" id="quantity" value=1 min=1>

@@ -20,7 +20,12 @@
     padding-inline: 10px;
     display: flex;
     justify-content: center;
+    stroke: var(--CTA_enabled);
     align-items: center;
+}
+
+.arrow img{
+    mix-blend-mode: difference;
 }
 
 .arrow:hover{
@@ -93,19 +98,28 @@
     margin: 0;
 }
 
-.product .details{
+.product .infos{
+    flex: 3;
+}
+
+.product .infos .details{
     position: relative;
     top: 12em;
     padding-inline: 5em;
     padding-block: 1em;
 }
 
-.product .details h4{
+.product .infos .details h4{
     margin: 0;
 }
 
-.product .infos{
-    flex: 3;
+.product .infos .details .rating{
+    display: flex;
+    column-gap: .2em;
+}
+
+.product .infos .details .rating img{
+    width: 30px;
 }
 
 .product .infos .price{
