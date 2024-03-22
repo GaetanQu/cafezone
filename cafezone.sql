@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1deb5ubuntu1
 -- https://www.phpmyadmin.net/
 --
--- Hôte : localhost
--- Généré le : dim. 17 mars 2024 à 17:30
+-- Hôte : localhost:3306
+-- Généré le : ven. 22 mars 2024 à 09:53
 -- Version du serveur : 10.6.16-MariaDB-0ubuntu0.22.04.1
 -- Version de PHP : 8.1.2-1ubuntu2.14
 
@@ -127,15 +127,15 @@ INSERT INTO `countries` (`id`, `name`, `flag`) VALUES
 
 CREATE TABLE `products` (
   `id` int(11) NOT NULL,
-  `name` varchar(100) DEFAULT NULL,
-  `reference` varchar(100) DEFAULT NULL,
-  `description` varchar(500) DEFAULT NULL,
+  `name` varchar(100) NOT NULL,
+  `reference` varchar(100) NOT NULL,
+  `description` varchar(500) NOT NULL,
   `brand_id` int(11) DEFAULT NULL,
-  `price` decimal(10,2) DEFAULT NULL,
+  `price` decimal(10,2) NOT NULL,
   `sca` int(3) DEFAULT NULL,
   `country_id` int(11) DEFAULT NULL,
-  `category_id` int(11) DEFAULT NULL,
-  `images` varchar(256) DEFAULT NULL
+  `category_id` int(11) NOT NULL,
+  `images` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -144,14 +144,14 @@ CREATE TABLE `products` (
 
 INSERT INTO `products` (`id`, `name`, `reference`, `description`, `brand_id`, `price`, `sca`, `country_id`, `category_id`, `images`) VALUES
 (1, 'Magnifica S Smart', 'FEB2523.SB', 'Expresso broyeur élégant aux finitions épurées pour habiller toutes les cuisines', 1, '449.99', NULL, NULL, 2, 'images/Products/FEB2523.SB'),
-(2, 'Shembati - Kayanza', NULL, 'Encore une pépite de Salum Ramadan. Des notes d\'épices et de fruits jaunes, et une longueur en bouche chocolatée avec des touches d\'amande.', NULL, '7.99', 86, 1, 1, NULL),
-(3, 'Santiago Mamani', NULL, 'Un café complexe, aux notes de chocolat, de fraise, de citron et de myrtilles | Un café d\'exception, rare et unique', NULL, '8.90', 87, 4, 1, NULL),
-(4, 'Hacienda Colima', NULL, 'Des saveurs florales sublimées par la gourmandise de la noisette, du chocolat et du miel.', NULL, '5.50', 84, 8, 1, NULL),
-(5, 'Iguana - San José de Ocoa', NULL, 'Une tasse parfumée, aux notes de noisette et de caramel. Un régal pour les papilles sans trop bousculer les néophytes en café de spécialité.', NULL, '5.80', 82, 5, 1, NULL),
-(6, 'El Toston Diplito', NULL, 'Un café rond et équilibré, des notes de caramel et de chocolat avec des touches d\'amande et de prune. Bonne longueur en bouche, corps plein.', NULL, '6.30', NULL, 3, 1, ''),
-(7, 'Mélange Mokka', NULL, 'Un café équilibré aux notes florales, légèrement boisé. Idéal pour s\'initier aux cafés d\'Afrique, tout en douceur', NULL, '4.95', NULL, 6, 1, NULL),
-(8, 'Raggiana', NULL, 'Un café boisé, avec des notes de noix, d\'abricot et de coriandre. Un café d\'origine lointaine, pour un voyage des sens.', NULL, '5.70', NULL, 2, 1, NULL),
-(9, 'Serrano Lavado', NULL, 'Des arômes riches, avec des notes de chocolat et de noix. Un corps plein, légèrement boisé.', NULL, '5.99', NULL, 7, 1, NULL),
+(2, 'Shembati - Kayanza', '1', 'Encore une pépite de Salum Ramadan. Des notes d\'épices et de fruits jaunes, et une longueur en bouche chocolatée avec des touches d\'amande.', NULL, '7.99', 86, 1, 1, 'images/Products/1'),
+(3, 'Santiago Mamani', '2', 'Un café complexe, aux notes de chocolat, de fraise, de citron et de myrtilles | Un café d\'exception, rare et unique', NULL, '8.90', 87, 4, 1, 'images/Products/1'),
+(4, 'Hacienda Colima', '3', 'Des saveurs florales sublimées par la gourmandise de la noisette, du chocolat et du miel.', NULL, '5.50', 84, 8, 1, 'images/Products/1'),
+(5, 'Iguana - San José de Ocoa', '4', 'Une tasse parfumée, aux notes de noisette et de caramel. Un régal pour les papilles sans trop bousculer les néophytes en café de spécialité.', NULL, '5.80', 82, 5, 1, 'images/Products/1'),
+(6, 'El Toston Diplito', '5', 'Un café rond et équilibré, des notes de caramel et de chocolat avec des touches d\'amande et de prune. Bonne longueur en bouche, corps plein.', NULL, '6.30', NULL, 3, 1, 'images/Products/1'),
+(7, 'Mélange Mokka', '6', 'Un café équilibré aux notes florales, légèrement boisé. Idéal pour s\'initier aux cafés d\'Afrique, tout en douceur', NULL, '4.95', NULL, 6, 1, 'images/Products/1'),
+(8, 'Raggiana', '7', 'Un café boisé, avec des notes de noix, d\'abricot et de coriandre. Un café d\'origine lointaine, pour un voyage des sens.', NULL, '5.70', NULL, 2, 1, 'images/Products/1'),
+(9, 'Serrano Lavado', '8', 'Des arômes riches, avec des notes de chocolat et de noix. Un corps plein, légèrement boisé.', NULL, '5.99', NULL, 7, 1, 'images/Products/1'),
 (10, 'Maestosa', 'EPAM960.75.GLM', 'L’expresso broyeur Maestosa au design saisissant et technologie de pointe', 1, '2899.99', NULL, NULL, 2, 'images/Products/EPAM960.75.GLM'),
 (11, 'Style Dedica', 'EC695.M', 'Une machine expresso pratique, simple d’utilisation, moderne et design qui vous offre le goût exquis de l’expresso chez vous', 1, '249.99', NULL, NULL, 2, 'images/Products/EC695.M'),
 (12, 'La Specialista Prestigio', 'EC9355.BM', 'N’hésitez plus à créer les boissons qui vous correspondent grâce à La Specialista Prestigio.', 1, '899.90', NULL, NULL, 2, 'images/Products/EC9355.BM');
@@ -159,19 +159,19 @@ INSERT INTO `products` (`id`, `name`, `reference`, `description`, `brand_id`, `p
 -- --------------------------------------------------------
 
 --
--- Structure de la table `product_aromas`
+-- Structure de la table `products_aromas`
 --
 
-CREATE TABLE `product_aromas` (
+CREATE TABLE `products_aromas` (
   `product_id` int(11) DEFAULT NULL,
   `aroma_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Déchargement des données de la table `product_aromas`
+-- Déchargement des données de la table `products_aromas`
 --
 
-INSERT INTO `product_aromas` (`product_id`, `aroma_id`) VALUES
+INSERT INTO `products_aromas` (`product_id`, `aroma_id`) VALUES
 (3, 3),
 (3, 10),
 (3, 11),
@@ -180,6 +180,32 @@ INSERT INTO `product_aromas` (`product_id`, `aroma_id`) VALUES
 (2, 14),
 (2, 3),
 (2, 8);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `products_types`
+--
+
+CREATE TABLE `products_types` (
+  `product_id` int(11) NOT NULL,
+  `type_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `products_types`
+--
+
+INSERT INTO `products_types` (`product_id`, `type_id`) VALUES
+(10, 2),
+(10, 3),
+(1, 2),
+(1, 3),
+(11, 1),
+(11, 3),
+(12, 1),
+(12, 3),
+(12, 2);
 
 -- --------------------------------------------------------
 
@@ -211,16 +237,17 @@ INSERT INTO `ratings` (`id`, `user_id`, `product_id`, `stars`, `comment`) VALUES
 CREATE TABLE `shops` (
   `id` int(11) NOT NULL,
   `name` varchar(100) DEFAULT NULL,
-  `color` varchar(6) DEFAULT NULL
+  `color` varchar(6) DEFAULT NULL,
+  `logo` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `shops`
 --
 
-INSERT INTO `shops` (`id`, `name`, `color`) VALUES
-(1, 'De\'Longhi', '0d213d'),
-(2, 'Au Bon Kawa', '5b3726');
+INSERT INTO `shops` (`id`, `name`, `color`, `logo`) VALUES
+(1, 'De\'Longhi', '0d213d', 'images/shops/DeLonghi.webp'),
+(2, 'Au Bon Kawa', 'b35333', '');
 
 -- --------------------------------------------------------
 
@@ -250,6 +277,26 @@ INSERT INTO `shops_products` (`shop_id`, `product_id`) VALUES
 (2, 9),
 (1, 11),
 (1, 12);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `types`
+--
+
+CREATE TABLE `types` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `types`
+--
+
+INSERT INTO `types` (`id`, `name`) VALUES
+(1, 'Percolateur'),
+(2, 'Broyeur'),
+(3, 'Espresso');
 
 -- --------------------------------------------------------
 
@@ -311,11 +358,18 @@ ALTER TABLE `products`
   ADD KEY `category_id` (`category_id`);
 
 --
--- Index pour la table `product_aromas`
+-- Index pour la table `products_aromas`
 --
-ALTER TABLE `product_aromas`
+ALTER TABLE `products_aromas`
   ADD KEY `product_id` (`product_id`),
   ADD KEY `aroma_id` (`aroma_id`);
+
+--
+-- Index pour la table `products_types`
+--
+ALTER TABLE `products_types`
+  ADD KEY `product_id` (`product_id`),
+  ADD KEY `type_id` (`type_id`);
 
 --
 -- Index pour la table `ratings`
@@ -337,6 +391,12 @@ ALTER TABLE `shops`
 ALTER TABLE `shops_products`
   ADD KEY `shop_id` (`shop_id`),
   ADD KEY `product_id` (`product_id`);
+
+--
+-- Index pour la table `types`
+--
+ALTER TABLE `types`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `users`
@@ -382,13 +442,19 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT pour la table `ratings`
 --
 ALTER TABLE `ratings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `shops`
 --
 ALTER TABLE `shops`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT pour la table `types`
+--
+ALTER TABLE `types`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `users`
@@ -409,11 +475,18 @@ ALTER TABLE `products`
   ADD CONSTRAINT `products_ibfk_4` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`);
 
 --
--- Contraintes pour la table `product_aromas`
+-- Contraintes pour la table `products_aromas`
 --
-ALTER TABLE `product_aromas`
-  ADD CONSTRAINT `product_aromas_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
-  ADD CONSTRAINT `product_aromas_ibfk_2` FOREIGN KEY (`aroma_id`) REFERENCES `aromas` (`id`);
+ALTER TABLE `products_aromas`
+  ADD CONSTRAINT `products_aromas_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
+  ADD CONSTRAINT `products_aromas_ibfk_2` FOREIGN KEY (`aroma_id`) REFERENCES `aromas` (`id`);
+
+--
+-- Contraintes pour la table `products_types`
+--
+ALTER TABLE `products_types`
+  ADD CONSTRAINT `products_types_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
+  ADD CONSTRAINT `products_types_ibfk_2` FOREIGN KEY (`type_id`) REFERENCES `types` (`id`);
 
 --
 -- Contraintes pour la table `ratings`
