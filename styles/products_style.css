@@ -61,7 +61,9 @@ cafezone-product{
     margin-inline: 1em;
     margin-bottom: 3em;
     width: 40%;
+    min-width: 500px;
     height: 20vw;
+    min-height: 300px;
     border: 1px solid var(--background_color);
     background-color: var(--background_color);
     filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
@@ -73,7 +75,7 @@ cafezone-product .link{
     position: relative;
     display: flex;
     flex: auto;
-    color: var(--text_light);
+    color: var(--Text_light);
 }
 
 cafezone-product img{
@@ -89,7 +91,6 @@ cafezone-product .details{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    color: var(--main_text_color);
 }
 
 cafezone-product .details .name{

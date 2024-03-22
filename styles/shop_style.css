@@ -17,10 +17,16 @@
     background-color: var(--transluscent_brown);
 }
 
+.hero .title .div{
+    position: relative;
+}
+
 .hero .title img{
     position: absolute;
-    height: 50%;
-    left: calc(50vw - calc(10rem + 15vw));
+    height: 90%;
+    left: 0;
+    top: 50%;
+    transform: translate(-110%, -50%);
 }
 
 .hero .cards{

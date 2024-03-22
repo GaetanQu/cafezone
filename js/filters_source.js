@@ -28,21 +28,3 @@ rangeInput.forEach(input =>{
         }
     })
 })
-
-//Composant de filtre du pays d'origine
-class country_filter extends HTMLElement{
-    constructor(){
-        super();
-        this.checkbox = document.createElement('input');
-        this.checkbox.type='checkbox';
-        this.name = this.getAttribute('country');
-        this.checkbox.id = this.name;
-        this.label = document.createElement('label');
-        this.label.htmlFor = this.checkbox.id;
-        this.label.innerHTML=this.name
-
-        this.appendChild(this.checkbox);
-        this.appendChild(this.label);
-    }
-}
-customElements.define('country-filter', country_filter);

@@ -91,7 +91,9 @@ class cafezone_product extends HTMLElement{
             this.country.appendChild(this.country_name);
             this.country.appendChild(this.flag)
         }
-        this.band.appendChild(this.brand);
+        else{
+            this.band.appendChild(this.brand);
+        }
 
         this.details.appendChild(this.description);
 

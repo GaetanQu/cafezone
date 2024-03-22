@@ -29,8 +29,8 @@
 
 .filters.side:hover{
     position: fixed;
-    transition: 500ms;
     transform: translateX(300px);
+    transition: 500ms;
     overflow-y: auto;
 }
 
@@ -150,7 +150,7 @@ input[type="range"]::-webkit-slider-thumb{
     padding-left: 1em;
 }
 
-.filters .country ul country-filter{
+.filters .country ul li{
     display: grid;
     grid-template-columns: 1rem 1fr;
     gap: .5em;

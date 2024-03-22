@@ -1,11 +1,26 @@
-<?php require_once(__DIR__ . '/pdo.php'); ?>
+<?php require_once(__DIR__ . '/pdo.php');
 
-<?php
-$productInfosStatement = $mysqlClient -> prepare('SELECT products.id AS id, products.images AS images, products.name AS name, brands.name AS brand, products.description AS description, products.reference AS reference, products.price AS price, shops.name AS shop, shops.color AS color FROM products JOIN shops_products ON products.id = shops_products.product_id JOIN shops ON shops.id = shops_products.shop_id JOIN brands ON brands.id = products.brand_id WHERE products.reference ="'.$_GET['ref'].'"');
-$productInfosStatement -> execute();
-$productsInfos = $productInfosStatement -> fetchAll();
+$productCategoryStatement = $mysqlClient -> prepare('SELECT categories.name FROM products JOIN  categories ON categories.id = products.category_id WHERE products.reference ="'.$_GET['ref'].'"');
+$productCategoryStatement -> execute();
+$productCategory = ($productCategoryStatement -> fetchall())[0][0];
 
-$product = $productsInfos[0];
+if($productCategory === "Bean")
+{
+    $productStatement = $mysqlClient -> prepare('SELECT products.id AS id, products.images AS images, products.name AS name, products.description AS description, products.reference AS reference, products.price AS price, shops.name AS shop, shops.color AS color FROM products JOIN shops_products ON products.id = shops_products.product_id JOIN shops ON shops.id = shops_products.shop_id WHERE products.reference ="'.$_GET['ref'].'"');
+
+    $aromasStatement = $mysqlClient -> prepare('SELECT aromas.name FROM aromas JOIN products_aromas ON products_aromas.aroma_id = aromas.id JOIN products ON products.id = products_aromas.product_id WHERE products.reference ="'.$_GET['ref'].'"');
+    $aromasStatement -> execute();
+    $aromas = $aromasStatement -> fetchall();
+}
+
+else
+{
+    $productStatement = $mysqlClient -> prepare('SELECT products.id AS id, products.images AS images, products.name AS name, products.description AS description, products.reference AS reference, products.price AS price, shops.name AS shop, shops.color AS color, brands.name AS brand FROM products JOIN shops_products ON products.id = shops_products.product_id JOIN shops ON shops.id = shops_products.shop_id JOIN brands ON brands.id = products.brand_id WHERE products.reference ="'.$_GET['ref'].'"');
+}
+
+$productStatement -> execute();
+$product = ($productStatement -> fetchAll())[0];
+
 
 $ratingsStatement = $mysqlClient -> prepare('SELECT * FROM ratings WHERE product_id = '.$product['id']);
 $ratingsStatement -> execute();
@@ -57,11 +72,22 @@ $images = scandir('images/Products/'.$_GET['ref']);
         <div class="infos">
             <div class="name floating" style="background-color: #<?php echo $product['color'] ?>">
                 <h1><?php echo $product['name']?></h1>
-                <h3><?php echo $product['brand']?></h3>
+                <?php if($productCategory != "Bean"):?>
+                    <h3><?php echo $product['brand']?></h3>
+                <?php else :
+                    $i = 0;?>
+                    <h3><?php foreach($aromas as $aroma){
+                        echo $aroma[0]." ";
+                        $i++;
+                        if($i < count($aromas)){
+                            echo " - ";
+                        }
+                        }?></h3>
+                <?php endif?>
             </div>
             <div class="details">
                 <h4><?php echo $product['description'] ?></h4>
-                <p>Vendu par <?php echo $product['shop'] ?></p>
+                <p>Vendu par <a href="shop.php?shop=<?php echo $product['shop']?>" style="color:<?php echo $product['color']?>; font-weight:bold; text-decoration:underline;"><?php echo $product['shop'] ?></a></p>
                 <p>Référence : <?php echo $product['reference']?></p>
                 <div class="rating">
                     <?php for($i = 1; $i <= 5; $i++):?>

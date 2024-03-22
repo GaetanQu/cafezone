@@ -11,12 +11,6 @@
 :root{
     --background_color: white;
 
-    --accentuation_color_1: rgb(54, 54, 54);
-    --accentuation_color_2: rgb(102, 102, 102);
-
-    --famous_bean_image:url("../images/Beans/Famous.png");
-    --famous_bean_shop_color: var(--transluscent_brown);
-
     --brown: #361c15;
     --dark_brown: #20100B;
 
@@ -26,10 +20,7 @@
 
     --blur_color: rgba(212, 212, 212, 0.809);
 
-    --Text_dark: #1d1f26;
-    --Text_light: #d9d9d9;
-    --Text_gray: #8d8d8d;
-    --main_text_color : var(--Text_dark);
+    --text-color: black;
 
     --searchbar_color: white;
     --scrollbar_color: rgb(200 200 200);
@@ -40,7 +31,7 @@
     --CTA_nav: #391F0E;
     --CTA_nav_hover:#492C1E;
 
-    --filters: rgba(255, 255, 255, 0.8);
+    --filters: rgba(255, 255, 255, 0.5);
 
     --blur:blur(20px);
     --image_drop_shadow: 0 0 5px black;
@@ -128,6 +119,11 @@ h5{
 a{
     color: var(--Text_light);
     text-decoration: none;
+}
+
+p{
+    color: var(--text-color);
+    mix-blend-mode: difference;
 }
 
 .title{
