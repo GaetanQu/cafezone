@@ -8,6 +8,6 @@ $mysqlClient = new PDO(
     dbname=cafezone;
     charset=utf8',
     'root',
-    'Boubou.17042002'
+    'motdepasse'
 )
 ?>

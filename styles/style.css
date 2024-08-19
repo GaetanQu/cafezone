@@ -11,6 +11,8 @@
 :root{
     --background_color: white;
 
+    --accentuation_color_1: rgba(20 20 20 / 0.597);
+
     --brown: #361c15;
     --dark_brown: #20100B;
 
@@ -21,6 +23,7 @@
     --blur_color: rgba(212, 212, 212, 0.809);
 
     --text-color: black;
+    --Text_light: white;
 
     --searchbar_color: white;
     --scrollbar_color: rgb(200 200 200);
@@ -122,7 +125,7 @@ a{
 }
 
 p{
-    color: var(--text-color);
+    color: var(--Text_light);
     mix-blend-mode: difference;
 }
 

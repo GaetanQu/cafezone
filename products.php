@@ -3,11 +3,11 @@
 <?php
 
 if($_GET['category'] === "Bean"){
-    $productsStatement = $mysqlClient -> prepare('SELECT products.name AS name, countries.name AS country, countries.flag AS flag, shops.color AS color, products.images AS images, products.description AS description, products.price AS price, products.reference AS reference FROM products JOIN countries ON countries.id = products.country_id JOIN shops_products ON shops_products.product_id = products.id JOIN shops ON shops.id = shops_products.shop_id JOIN categories ON categories.id = products.category_id WHERE categories.name ="'.$_GET['category'].'"');
+    $productsStatement = $mysqlClient -> prepare('SELECT products.name AS name, countries.name AS country, countries.flag AS flag, shops.color AS color, products.images AS images, products.description AS description, products.price AS price, products.reference AS reference FROM products JOIN countries ON countries.id = products.country_id JOIN shop_product ON shop_product.product_id = products.id JOIN shops ON shops.id = shop_product.shop_id JOIN categories ON categories.id = products.category_id WHERE categories.name ="'.$_GET['category'].'"');
 }
 
 else{
-    $productsStatement = $mysqlClient -> prepare('SELECT products.name AS name, brands.name AS brand, shops.color AS color, products.images AS images, products.description AS description, products.price AS price, products.reference AS reference FROM products JOIN brands ON brands.id = products.brand_id JOIN shops_products ON shops_products.product_id = products.id JOIN shops ON shops.id = shops_products.shop_id JOIN categories ON categories.id = products.category_id WHERE categories.name ="'.$_GET['category'].'"');
+    $productsStatement = $mysqlClient -> prepare('SELECT products.name AS name, brands.name AS brand, shops.color AS color, products.images AS images, products.description AS description, products.price AS price, products.reference AS reference FROM products JOIN brands ON brands.id = products.brand_id JOIN shop_product ON shop_product.product_id = products.id JOIN shops ON shops.id = shop_product.shop_id JOIN categories ON categories.id = products.category_id WHERE categories.name ="'.$_GET['category'].'"');
 }
 
 $productsStatement -> execute();
@@ -80,7 +80,7 @@ $shops = $shopsStatement -> fetchAll();
                     <li class="type">
                         <h4>Type de machine</h4>
                         <?php
-                        $allTypesStatement = $mysqlClient -> prepare('SELECT types.id AS id, types.name AS name FROM types JOIN products_types ON types.id = products_types.type_id JOIN products ON products.id = products_types.product_id WHERE products.category_id = 2');
+                        $allTypesStatement = $mysqlClient -> prepare('SELECT types.id AS id, types.name AS name FROM types JOIN product_type ON types.id = product_type.type_id JOIN products ON products.id = product_type.product_id WHERE products.category_id = 2');
                         $allTypesStatement -> execute();
                         $allTypes = $allTypesStatement -> fetchAll();
 
@@ -130,11 +130,11 @@ $shops = $shopsStatement -> fetchAll();
         <?php foreach($shops as $shop): ?>
             <?php 
             if($_GET['category'] === "Bean"){
-                $productsStatement = $mysqlClient -> prepare('SELECT products.name AS name, countries.name AS country, countries.flag AS flag, shops.color AS color, products.images AS images, products.description AS description, products.price AS price, products.reference AS reference FROM products JOIN countries ON countries.id = products.country_id JOIN shops_products ON shops_products.product_id = products.id JOIN shops ON shops.id = shops_products.shop_id JOIN categories ON categories.id = products.category_id WHERE categories.name ="'.$_GET['category'].'" AND shops.id ='.$shop['id']);
+                $productsStatement = $mysqlClient -> prepare('SELECT products.name AS name, countries.name AS country, countries.flag AS flag, shops.color AS color, products.images AS images, products.description AS description, products.price AS price, products.reference AS reference FROM products JOIN countries ON countries.id = products.country_id JOIN shop_product ON shop_product.product_id = products.id JOIN shops ON shops.id = shop_product.shop_id JOIN categories ON categories.id = products.category_id WHERE categories.name ="'.$_GET['category'].'" AND shops.id ='.$shop['id']);
             }
             
             else{
-                $productsStatement = $mysqlClient -> prepare('SELECT products.name AS name, brands.name AS brand, shops.color AS color, products.images AS images, products.description AS description, products.price AS price, products.reference AS reference FROM products JOIN brands ON brands.id = products.brand_id JOIN shops_products ON shops_products.product_id = products.id JOIN shops ON shops.id = shops_products.shop_id JOIN categories ON categories.id = products.category_id WHERE categories.name ="'.$_GET['category'].'" AND shops.id ='.$shop['id']);
+                $productsStatement = $mysqlClient -> prepare('SELECT products.name AS name, brands.name AS brand, shops.color AS color, products.images AS images, products.description AS description, products.price AS price, products.reference AS reference FROM products JOIN brands ON brands.id = products.brand_id JOIN shop_product ON shop_product.product_id = products.id JOIN shops ON shops.id = shop_product.shop_id JOIN categories ON categories.id = products.category_id WHERE categories.name ="'.$_GET['category'].'" AND shops.id ='.$shop['id']);
             }
             $productsStatement -> execute();
             $products = $productsStatement -> fetchAll();

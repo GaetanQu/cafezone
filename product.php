@@ -6,16 +6,16 @@ $productCategory = ($productCategoryStatement -> fetchall())[0][0];
 
 if($productCategory === "Bean")
 {
-    $productStatement = $mysqlClient -> prepare('SELECT products.id AS id, products.images AS images, products.name AS name, products.description AS description, products.reference AS reference, products.price AS price, shops.name AS shop, shops.color AS color FROM products JOIN shops_products ON products.id = shops_products.product_id JOIN shops ON shops.id = shops_products.shop_id WHERE products.reference ="'.$_GET['ref'].'"');
+    $productStatement = $mysqlClient -> prepare('SELECT products.id AS id, products.images AS images, products.name AS name, products.description AS description, products.reference AS reference, products.price AS price, shops.name AS shop, shops.color AS color FROM products JOIN shop_product ON products.id = shop_product.product_id JOIN shops ON shops.id = shop_product.shop_id WHERE products.reference ="'.$_GET['ref'].'"');
 
-    $aromasStatement = $mysqlClient -> prepare('SELECT aromas.name FROM aromas JOIN products_aromas ON products_aromas.aroma_id = aromas.id JOIN products ON products.id = products_aromas.product_id WHERE products.reference ="'.$_GET['ref'].'"');
+    $aromasStatement = $mysqlClient -> prepare('SELECT aromas.name FROM aromas JOIN product_aroma ON product_aroma.aroma_id = aromas.id JOIN products ON products.id = product_aroma.product_id WHERE products.reference ="'.$_GET['ref'].'"');
     $aromasStatement -> execute();
     $aromas = $aromasStatement -> fetchall();
 }
 
 else
 {
-    $productStatement = $mysqlClient -> prepare('SELECT products.id AS id, products.images AS images, products.name AS name, products.description AS description, products.reference AS reference, products.price AS price, shops.name AS shop, shops.color AS color, brands.name AS brand FROM products JOIN shops_products ON products.id = shops_products.product_id JOIN shops ON shops.id = shops_products.shop_id JOIN brands ON brands.id = products.brand_id WHERE products.reference ="'.$_GET['ref'].'"');
+    $productStatement = $mysqlClient -> prepare('SELECT products.id AS id, products.images AS images, products.name AS name, products.description AS description, products.reference AS reference, products.price AS price, shops.name AS shop, shops.color AS color, brands.name AS brand FROM products JOIN shop_product ON products.id = shop_product.product_id JOIN shops ON shops.id = shop_product.shop_id JOIN brands ON brands.id = products.brand_id WHERE products.reference ="'.$_GET['ref'].'"');
 }
 
 $productStatement -> execute();
